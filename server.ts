@@ -1,0 +1,54 @@
+import {
+  AngularNodeAppEngine,
+  writeResponseToNodeResponse,
+  isMainModule,
+  createNodeRequestHandler,
+} from '@angular/ssr/node';
+import express from 'express';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+
+export function app(): express.Express {
+  const server = express();
+  const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+  const browserDistFolder = resolve(serverDistFolder, '../browser');
+
+  // Here, we now use the `AngularNodeAppEngine` instead of the `CommonEngine`
+  const angularNodeAppEngine = new AngularNodeAppEngine();
+
+  server.use('/api/**', (req, res) => res.json({ hello: 'foo' }));
+
+  server.get(
+    '**',
+    express.static(browserDistFolder, {
+      maxAge: '1y',
+      index: 'index.html',
+    })
+  );
+
+  server.get('**', (req, res, next) => {
+    // Yes, this is executed in devMode via the Vite DevServer 
+    console.log('request', req.url, res.status)
+
+    // REQUEST token from @angular/ssr isn't exposed yet
+    angularNodeAppEngine
+      .render(req)
+      .then((response) =>
+        response ? writeResponseToNodeResponse(response, res) : next()
+      )
+      .catch(next);
+  });
+
+  return server;
+}
+
+const server = app();
+if (isMainModule(import.meta.url)) {
+  const port = process.env['PORT'] || 4000;
+  server.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:\${port}`);
+  });
+}
+
+// This exposes the RequestHandler 
+export default createNodeRequestHandler(server);
