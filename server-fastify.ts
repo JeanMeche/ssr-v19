@@ -5,10 +5,16 @@ import {
   createNodeRequestHandler,
 } from '@angular/ssr/node';
 import fastify from 'fastify';
+import fastifyStatic from '@fastify/static';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 
 export function app() {
   const server = fastify();
   const angularNodeAppEngine = new AngularNodeAppEngine();
+  const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+  const browserDistFolder = resolve(serverDistFolder, '../browser');
+  server.register(fastifyStatic, { root: browserDistFolder, wildcard: false });
   server.get('*', async (req, reply) => {
     try {
       const response = await angularNodeAppEngine.render(req.raw, {
@@ -36,7 +42,7 @@ const server = app();
 if (isMainModule(import.meta.url)) {
   const port = +(process.env['PORT'] || 4000);
   server.listen({ port }, () => {
-    console.warn(`Fastify server listening on http://localhost:\${port}`);
+    console.warn(`Fastify server listening on http://localhost:${port}`);
   });
 }
 

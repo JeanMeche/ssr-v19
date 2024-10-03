@@ -24,13 +24,13 @@ The `AppEngine` enables running non-node dependent servers !
 
 This demo includes example with `h3`, `hono` and `fastify` (in addition to express)
 
-* `ng dev --configuration=fastify` ([server file](./server-fastify.ts))
-* `ng dev --configuration=hono`  ([server file](./server-hono.ts))
-* `ng dev --configuration=h3`  ([server file](./server-h3.ts))
+* `ng serve --configuration=fastify` ([server file](./server-fastify.ts))
+* `ng serve --configuration=hono`  ([server file](./server-hono.ts))
+* `ng serve --configuration=h3`  ([server file](./server-h3.ts))
 
 By default the demo will use `express`. 
 
 ## Run the demo
 
 1. install the deps with `yarn`
-2. run with `ng dev` or `yarn start`
+2. run with `ng serve` or `yarn start`
