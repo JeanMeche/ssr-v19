@@ -11,7 +11,10 @@
   "files": [
     "src/main.ts",
     "src/main.server.ts",
-    "server.ts"
+    "server.ts",
+    "server-hono.ts",
+    "server-h3.ts",
+    "server-fastify.ts"
   ],
   "include": [
     "src/**/*.d.ts"

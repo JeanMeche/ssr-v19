@@ -26,13 +26,17 @@ export function app(): express.Express {
     })
   );
 
-  server.get('**', (req, res, next) => {
-    // Yes, this is executed in devMode via the Vite DevServer 
-    console.log('request', req.url, res.status)
+  // With this config, /404 will not reach the Angular app
+  server.get('/404', (req, res, next) => {
+    res.send('Express is serving this server only error');
+  });
 
-    // REQUEST token from @angular/ssr isn't exposed yet
+  server.get('**', (req, res, next) => {
+    // Yes, this is executed in devMode via the Vite DevServer
+    console.log('request', req.url, res.status);
+
     angularNodeAppEngine
-      .render(req)
+      .render(req, { server: 'express' })
       .then((response) =>
         response ? writeResponseToNodeResponse(response, res) : next()
       )
@@ -50,5 +54,7 @@ if (isMainModule(import.meta.url)) {
   });
 }
 
-// This exposes the RequestHandler 
+console.warn('Node Express server started');
+
+// This exposes the RequestHandler
 export default createNodeRequestHandler(server);

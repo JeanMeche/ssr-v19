@@ -1,5 +1,4 @@
-import { isPlatformServer } from '@angular/common';
-import { Component, inject, PLATFORM_ID, VERSION } from '@angular/core';
+import { Component, inject, makeStateKey, TransferState, VERSION } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr';
@@ -9,12 +8,11 @@ import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <header>Angular {{ version }}</header>
-    AppComponent !
+    <header>Angular {{ version }} - Served by {{server}}</header>
 
     <h2>Try navigating to:</h2>
     <p>
-      <a href="/error">This server error page (a 404 served by the server)</a>
+      <a href="/error">This server error page (Server returns a 404, app shows the dedicated routed component)</a>
     </p>
     <p>
       <a href="/redirect"
@@ -39,11 +37,26 @@ import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr';
 })
 export class AppComponent {
   version = VERSION.full;
+  server: string | undefined;
+  transferState = inject(TransferState);
+  serverKey = makeStateKey<string>('server');
 
   constructor() {
     const request = inject(REQUEST, { optional: true });
-    if(request) {
+    if (request) {
       console.log('Server received a request', request.url);
     }
+
+    const reqContext = inject(REQUEST_CONTEXT, { optional: true }) as {
+      server: string;
+    };
+    if (reqContext) {
+      // The context is defined in the server*.ts file
+      this.server = reqContext.server;
+
+      // Store this as this won't be available on hydration
+      this.transferState.set(this.serverKey, this.server);
+    }
+    this.server = this.transferState.get(this.serverKey, '');
   }
 }

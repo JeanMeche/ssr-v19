@@ -58,6 +58,24 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "hono": {
+              "optimization": false,
+              "ssr": {
+                "entry": "server-hono.ts"
+              }
+            },
+            "h3": {
+              "optimization": false,
+              "ssr": {
+                "entry": "server-h3.ts"
+              }
+            },
+            "fastify": {
+              "optimization": false,
+              "ssr": {
+                "entry": "server-fastify.ts"
+              }
             }
           },
           "defaultConfiguration": "production"
@@ -70,6 +88,15 @@
             },
             "development": {
               "buildTarget": "ssr-new:build:development"
+            },
+            "hono": {
+              "buildTarget": "ssr-new:build:hono"
+            },
+            "h3": {
+              "buildTarget": "ssr-new:build:h3"
+            },
+            "fastify": {
+              "buildTarget": "ssr-new:build:fastify"
             }
           },
           "defaultConfiguration": "development"
