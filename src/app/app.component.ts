@@ -1,7 +1,7 @@
 import { Component, inject, makeStateKey, TransferState, VERSION } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr';
+import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr/tokens';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,8 @@ import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr';
   imports: [RouterOutlet],
   template: `
     <header>Angular {{ version }} - Served by {{server}}</header>
+
+    Welcome to this v19 demo of the new Angular AppEngine !
 
     <h2>Try navigating to:</h2>
     <p>
