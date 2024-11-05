@@ -15,7 +15,7 @@ export function app() {
   router.use(
     '/**',
     defineEventHandler((event) =>
-      angularAppEngine.render(toWebRequest(event), { server: 'h3' })
+      angularAppEngine.handle(toWebRequest(event), { server: 'h3' })
     )
   );
 

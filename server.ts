@@ -36,7 +36,7 @@ export function app(): express.Express {
     console.log('request', req.url, res.status);
 
     angularNodeAppEngine
-      .render(req, { server: 'express' })
+      .handle(req, { server: 'express' })
       .then((response) =>
         response ? writeResponseToNodeResponse(response, res) : next()
       )

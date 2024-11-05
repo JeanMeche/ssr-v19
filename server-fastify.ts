@@ -17,7 +17,7 @@ export function app() {
   server.register(fastifyStatic, { root: browserDistFolder, wildcard: false });
   server.get('*', async (req, reply) => {
     try {
-      const response = await angularNodeAppEngine.render(req.raw, {
+      const response = await angularNodeAppEngine.handle(req.raw, {
         server: 'fastify',
       });
       if (response) {

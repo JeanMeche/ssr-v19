@@ -7,7 +7,7 @@ export function app() {
   const angularAppEngine = new AngularAppEngine();
 
   server.get('/*', async (c) => {
-    const res = await angularAppEngine.render(c.req.raw, { server: 'hono' });
+    const res = await angularAppEngine.handle(c.req.raw, { server: 'hono' });
     return res || undefined;
   });
 

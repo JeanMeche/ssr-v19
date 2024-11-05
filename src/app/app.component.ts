@@ -1,7 +1,5 @@
-import { Component, inject, makeStateKey, TransferState, VERSION } from '@angular/core';
+import { Component, inject, makeStateKey, REQUEST, REQUEST_CONTEXT, TransferState, VERSION } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-import { REQUEST, REQUEST_CONTEXT } from '@angular/ssr';
 
 @Component({
   selector: 'app-root',
@@ -43,6 +41,7 @@ export class AppComponent {
 
   constructor() {
     const request = inject(REQUEST, { optional: true });
+    console.log(request);
     if (request) {
       console.log('Server received a request', request.url);
     }
