@@ -2,8 +2,8 @@ import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
 import {
   createApp,
   createRouter,
-  toWebHandler,
   defineEventHandler,
+  toWebHandler,
   toWebRequest,
 } from 'h3';
 
@@ -28,4 +28,4 @@ export function app() {
 
 const server = app();
 const handler = toWebHandler(server);
-export default createRequestHandler(handler);
+export const reqHandler = createRequestHandler(handler);

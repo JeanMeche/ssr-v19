@@ -1,12 +1,12 @@
 import {
   AngularNodeAppEngine,
-  writeResponseToNodeResponse,
-  isMainModule,
   createNodeRequestHandler,
+  isMainModule,
+  writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export function app(): express.Express {
   const server = express();
@@ -57,4 +57,4 @@ if (isMainModule(import.meta.url)) {
 console.warn('Node Express server started');
 
 // This exposes the RequestHandler
-export default createNodeRequestHandler(server);
+export const reqHandler = createNodeRequestHandler(server);
