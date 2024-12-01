@@ -1,13 +1,13 @@
 import {
   AngularNodeAppEngine,
-  writeResponseToNodeResponse,
-  isMainModule,
   createNodeRequestHandler,
+  isMainModule,
+  writeResponseToNodeResponse,
 } from '@angular/ssr/node';
-import fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
-import { fileURLToPath } from 'node:url';
+import fastify from 'fastify';
 import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export function app() {
   const server = fastify();
@@ -48,7 +48,7 @@ if (isMainModule(import.meta.url)) {
 
 console.warn('Fastify server started');
 
-export default createNodeRequestHandler(async (req, res) => {
+export const reqHandler = createNodeRequestHandler(async (req, res) => {
   await server.ready();
   server.server.emit('request', req, res);
 });

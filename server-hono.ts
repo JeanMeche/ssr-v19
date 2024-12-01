@@ -1,6 +1,5 @@
 import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
 import { Hono } from 'hono';
-import { getConnInfo } from 'hono/cloudflare-workers';
 
 export function app() {
   const server = new Hono();
@@ -17,4 +16,4 @@ export function app() {
 }
 
 const server = app();
-export default createRequestHandler(server.fetch);
+export const reqHandler = createRequestHandler(server.fetch);
