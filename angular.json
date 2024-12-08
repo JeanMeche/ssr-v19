@@ -76,6 +76,12 @@
               "ssr": {
                 "entry": "server-fastify.ts"
               }
+            },
+            "elysia": {
+              "optimization": false,
+              "ssr": {
+                "entry": "server-elysia.ts"
+              }
             }
           },
           "defaultConfiguration": "production"
@@ -88,6 +94,9 @@
             },
             "development": {
               "buildTarget": "ssr-new:build:development"
+            },
+            "elysia": {
+              "buildTarget": "ssr-new:build:elysia"
             },
             "hono": {
               "buildTarget": "ssr-new:build:hono"
