@@ -12,21 +12,20 @@
 - Server routes are defined in [app.routes.server.ts](/src/app/app.routes.server.ts)
 - Server side token are accessible (like REQUEST, REQUEST_CONTEXT etc.)
 
-> [!WARNING]  
-> This is pretty much a WIP and this demo is not feature complete.
+> [!Note]  
+> This is a small demo and does not exhibit every features.
 
-> [!NOTE]
-> This project is based a pre-release of v19 which is under active development
 
 ## AppEngine 
 
 The `AppEngine` enables running non-node dependent servers ! 
 
-This demo includes example with `h3`, `hono` and `fastify` (in addition to express)
+This demo includes example with `h3`, `elysia`, `hono` and `fastify` (in addition to express)
 
 * `ng serve --configuration=fastify` ([server file](./server-fastify.ts))
 * `ng serve --configuration=hono`  ([server file](./server-hono.ts))
 * `ng serve --configuration=h3`  ([server file](./server-h3.ts))
+* `ng serve --configuration=elysia`  ([server file](./server-elysia.ts))
 
 By default the demo will use `express`. 
 

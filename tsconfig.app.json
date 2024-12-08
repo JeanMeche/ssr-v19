@@ -14,7 +14,8 @@
     "server.ts",
     "server-hono.ts",
     "server-h3.ts",
-    "server-fastify.ts"
+    "server-fastify.ts",
+    "server-elysia.ts",
   ],
   "include": [
     "src/**/*.d.ts"
