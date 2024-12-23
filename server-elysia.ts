@@ -1,10 +1,22 @@
 import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
 import { isMainModule } from '@angular/ssr/node';
-import { Elysia } from 'elysia'
+import { Elysia } from 'elysia';
+import { staticPlugin } from '@elysiajs/static';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export function app() {
   const server = new Elysia();
   const angularAppEngine = new AngularAppEngine();
+
+  const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+  const browserDistFolder = resolve(serverDistFolder, '../browser');
+
+  server.use(staticPlugin({
+    prefix: '',
+    assets: browserDistFolder,
+    alwaysStatic: true,
+  }));
 
   server.get('/*', async (c) => {
     const res = await angularAppEngine.handle(c.request, { server: 'elysia' });

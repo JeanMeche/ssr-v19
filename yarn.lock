@@ -1073,6 +1073,13 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.6.3.tgz#f13c7c205915eb91ae54c557f5e92bddd8be0e83"
   integrity sha512-4B4OijXeVNOPZlYA2oEwWOTkzyltLao+xbotHQeqN++Rv27Y6s818+n2Qkp8q+Fxhn0t/5lA5X1Mxktud8eayQ==
 
+"@elysiajs/static@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@elysiajs/static/-/static-1.2.0.tgz#67439cbee8daf5932b256930a0267d1df1342b37"
+  integrity sha512-oLpAi8c+maPpA0XhhK3BELaIjIG+nXg/K9p8cFfW4q5ayRD59a3MOMOOGgpiXZkHJzLPWcouhhyyLAYtaANW4g==
+  dependencies:
+    node-cache "^5.1.2"
+
 "@esbuild/aix-ppc64@0.21.5":
   version "0.21.5"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.21.5.tgz#c7184a326533fcdf1b8ee0733e21c713b975575f"
@@ -1363,6 +1370,11 @@
     fastify-plugin "^5.0.0"
     fastq "^1.17.1"
     glob "^11.0.0"
+
+"@hono/node-server@^1.13.7":
+  version "1.13.7"
+  resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.13.7.tgz#af95cf97bd24ddffc97e72851738cbde0a98c791"
+  integrity sha512-kTfUMsoloVKtRA2fLiGSd9qBddmru9KadNyhJCwgKBxTiNkaAJEwkVN9KV/rS4HtmmNRtUh6P+YpmjRMl0d9vQ==
 
 "@inquirer/checkbox@^4.0.2":
   version "4.0.2"
@@ -2223,10 +2235,10 @@
     "@sigstore/core" "^2.0.0"
     "@sigstore/protobuf-specs" "^0.3.2"
 
-"@sinclair/typebox@0.32.34":
-  version "0.32.34"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.34.tgz#a1c59d4df30982263cc7aa64c2c853878050838d"
-  integrity sha512-a3Z3ytYl6R/+7ldxx04PO1semkwWlX/8pTqxsPw4quIcIXDFPZhOc1Wx8azWmkU26ccK3mHwcWenn0avNgAKQg==
+"@sinclair/typebox@^0.34.13":
+  version "0.34.13"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.13.tgz#9a014b58d10a4a5d0ac8badaa793571224767c4b"
+  integrity sha512-ceVKqyCEgC355Kw0s/0tyfY9MzMQINSykJ/pG2w6YnaZyrcjV48svZpr8lVZrYgWjzOmrIPBhQRAtr/7eJpA5g==
 
 "@sindresorhus/merge-streams@^2.1.0":
   version "2.3.0"
@@ -3121,6 +3133,11 @@ clone-deep@^4.0.1:
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
 
+clone@2.x:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+  integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
+
 clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
@@ -3235,7 +3252,7 @@ cookie@0.7.1:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.7.1.tgz#2f73c42142d5d5cf71310a74fc4ae61670e5dbc9"
   integrity sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==
 
-cookie@^1.0.1:
+cookie@^1.0.1, cookie@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-1.0.2.tgz#27360701532116bd3f1f9416929d176afe1e4610"
   integrity sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==
@@ -3510,14 +3527,15 @@ electron-to-chromium@^1.5.41:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.68.tgz#4f46be4d465ef00e2100d5557b66f4af70e3ce6c"
   integrity sha512-FgMdJlma0OzUYlbrtZ4AeXjKxKPk6KT8WOP8BjcqxWtlg8qyJQjRzPJzUtUn5GBg1oQ26hFs7HOOHJMYiJRnvQ==
 
-elysia@^1.1.26:
-  version "1.1.26"
-  resolved "https://registry.yarnpkg.com/elysia/-/elysia-1.1.26.tgz#1092bf0cf75d3aeed43a7039d50bc77b8a88bfee"
-  integrity sha512-wtHa46hP4cMzzgq+WlqVMz9th56FlEdS1UDJgtAJD3rQkjovidySKxFfdKEr16pulaleBo5OC1BQL35XhGaW0Q==
+elysia@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/elysia/-/elysia-1.2.2.tgz#2c605562a60383009330c1e6e3cb25636e7d9fb7"
+  integrity sha512-RWYd9w+ZZui60PJJfN1W7fWy6nGhAtyjHXRCMsHZXoDcX7wTvR88zcTAeQVw/uSPoPwBIg+/tUGQO6N2agHlNg==
   dependencies:
-    "@sinclair/typebox" "0.32.34"
-    cookie "^1.0.1"
+    "@sinclair/typebox" "^0.34.13"
+    cookie "^1.0.2"
     fast-decode-uri-component "^1.0.1"
+    memoirist "^0.2.0"
     openapi-types "^12.1.3"
 
 emoji-regex@^10.3.0:
@@ -5074,6 +5092,11 @@ memfs@^4.6.0:
     tree-dump "^1.0.1"
     tslib "^2.0.0"
 
+memoirist@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/memoirist/-/memoirist-0.2.0.tgz#7ee0f704a8edb8eebf4a718b118d3a4970817a90"
+  integrity sha512-DA1V11OWsKmYjgYHfT1luus0FtTjUbILfI9s5M+ckK29tBLON6GDhH5GwxDz7E1ou4Bdzm9vhbeCaRAWxwG+0g==
+
 merge-descriptors@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.3.tgz#d80319a65f3c7935351e5cfdac8f9318504dbed5"
@@ -5379,6 +5402,13 @@ node-addon-api@^7.0.0:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-7.1.1.tgz#1aba6693b0f255258a049d621329329322aad558"
   integrity sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==
+
+node-cache@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/node-cache/-/node-cache-5.1.2.tgz#f264dc2ccad0a780e76253a694e9fd0ed19c398d"
+  integrity sha512-t1QzWwnk4sjLWaQAS8CHgOJ+RAfmHpxFWmc36IWTiWHQfs0w5JDMBS1b1ZxQteo0vVVuWJvIUKHDkkeK7vIGCg==
+  dependencies:
+    clone "2.x"
 
 node-fetch-native@^1.6.4:
   version "1.6.4"
