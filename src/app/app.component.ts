@@ -41,7 +41,6 @@ export class AppComponent {
 
   constructor() {
     const request = inject(REQUEST, { optional: true });
-    console.log(request);
     if (request) {
       console.log('Server received a request', request.url);
     }

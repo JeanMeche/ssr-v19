@@ -1,11 +1,14 @@
 import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
+import { isMainModule } from '@angular/ssr/node';
 import {
   createApp,
   createRouter,
   defineEventHandler,
   toWebHandler,
   toWebRequest,
+  toNodeListener,
 } from 'h3';
+import { createServer } from 'node:http';
 
 export function app() {
   const server = createApp();
@@ -27,5 +30,12 @@ export function app() {
 }
 
 const server = app();
-const handler = toWebHandler(server);
-export const reqHandler = createRequestHandler(handler);
+const webHandler = toWebHandler(server);
+
+if (isMainModule(import.meta.url)) {
+  // Doesn't work correctly in prod
+  const port = process.env['PORT'] || 4000;
+  createServer(toNodeListener(server)).listen(port);
+}
+
+export const reqHandler = createRequestHandler(webHandler);
