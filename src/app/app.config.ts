@@ -7,7 +7,6 @@ import { provideClientHydration } from '@angular/platform-browser';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
-    // provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
   ],
